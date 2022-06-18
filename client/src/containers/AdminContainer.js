@@ -4,6 +4,7 @@ import AdminAddInspectorForm from '../components/AdminAddInspectorForm';
 import AdminAddManufacturerForm from '../components/AdminAddManufacturerForm';
 import AdminInspectorSearchForm from '../components/AdminInspectorSearchForm';
 import AdminInspectorsList from '../components/AdminInspectorsList';
+import TractorFactorService from "../services.js/TractorFactorServices";
 
 const AdminContainer = () => {
 
@@ -11,10 +12,10 @@ const AdminContainer = () => {
     const [isTractorActive, setIsTractorActive] = useState(false)
     const [isSearchActive, setIsSearchActive] = useState(false)
     const [isInspectorsActive, setIsInspectorsActive] = useState(false)
+    const [allManufacturers, setAllManufacturers] = useState(null)
+    const [allInspectors, setAllInspectors] = useState(null)
 
     const handleComponentClick = (component) => {
-
-        
         if (component === 'add-inspector'){
             setIsInspectorActive(!isInspectorActive)
             setIsTractorActive(false) 
@@ -42,6 +43,29 @@ const AdminContainer = () => {
             setIsInspectorsActive(!isInspectorsActive)
         }
     }
+
+    const fetchAllTractors = () => {
+        TractorFactorService.getAllManufacturers()
+        .then(data => setAllManufacturers(data));
+    }
+
+    useEffect(() => {
+        if(isTractorActive === true){
+        fetchAllTractors()
+        }
+    }, [isTractorActive] )
+
+    const fetchAllInspectors = () => {
+        TractorFactorService.getAllInspectors()
+        .then(data => setAllInspectors(data));
+    }
+
+    useEffect(() => {
+        if (isInspectorsActive === true){ 
+            fetchAllInspectors() 
+        }
+     }, [isInspectorsActive])
+
 
 
     return(
