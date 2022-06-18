@@ -15,6 +15,7 @@ const AdminContainer = () => {
     const [allManufacturers, setAllManufacturers] = useState(null)
     const [allInspectors, setAllInspectors] = useState(null)
 
+
     const handleComponentClick = (component) => {
         if (component === 'add-inspector'){
             setIsInspectorActive(!isInspectorActive)
@@ -73,16 +74,33 @@ const AdminContainer = () => {
         TractorFactorService.updateInspector(inspectorToUpdate)
      }
 
+     const handleUpdateButtonClick = (id) => {
+        // setIdToUpdate(evt.target.value)
+        console.log(id)
+    }
+
+    const handleDeleteButtonClick = (id) => {
+        TractorFactorService.deleteInspector(id)
+   
+        setTimeout(() => {
+            fetchAllInspectors();
+        }, 500)
+        
+    }
+
     return(
         <>
             <AdminNav handleComponentClick={handleComponentClick} />
-
             <section className = "admin-form-container">
                 {isInspectorActive === true ? <AdminAddInspectorForm allManufacturers={allManufacturers} /> : null }
                 {isTractorActive === true ? <AdminAddManufacturerForm /> : null }
                 {isSearchActive === true ? <AdminInspectorSearchForm /> : null }
-                {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector}/> : null}
+                {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} /> : null}
+                
             </section>
+            
+
+            
         </>
         
     )

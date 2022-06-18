@@ -1,3 +1,5 @@
+import AdminContainer from "../containers/AdminContainer";
+
 const baseUrl = 'http://localhost:8080/'
 
 const TractorFactorService = {
@@ -12,7 +14,7 @@ const TractorFactorService = {
         },
 
     updateInspector(inspectorToUpdate) {
-        return fetch(`http://localhost:8080/inspectors/${inspectorToUpdate.id}`,{
+        return fetch(`${baseUrl}inspectors/${inspectorToUpdate.id}`,{
             method:'PUT',
             body: JSON.stringify(inspectorToUpdate),
             headers:{
@@ -28,7 +30,21 @@ const TractorFactorService = {
         .catch((error) => {
             console.log(error)
             });
-        }
+        },
+
+    deleteInspector(id) {
+        fetch(`${baseUrl}inspectors/${id}`,{
+        method:'DELETE'})
+        .then(res=> {
+            if (res.ok) {
+                console.log("ok")
+            } 
+            throw new Error('shiiiit')
+        })
+        .catch((error) => { 
+            console.log(error)
+            });
+    }
 
     }
     

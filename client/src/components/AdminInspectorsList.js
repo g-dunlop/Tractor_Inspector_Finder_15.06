@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import AdminInspectorItem from './AdminInspectorItem';
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
 
-const AdminInspectorsList = ({inspectors, updateInspector}) => {
+const AdminInspectorsList = ({inspectors, updateInspector, handleDeleteButtonClick, handleUpdateButtonClick, isDeleteToast}) => {
 
     const [mappedInspectors, setMappedInspectors] = useState(null)
 
     const mapInspectors = () => {
         const mappedArray = inspectors.map((inspector, index) => {
-            return <AdminInspectorItem inspector={inspector} key={index} updateInspector={updateInspector} />
+            return <AdminInspectorItem inspector={inspector} key={index} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} />
         })
         setMappedInspectors(mappedArray)
     }
@@ -17,7 +17,7 @@ const AdminInspectorsList = ({inspectors, updateInspector}) => {
         if (inspectors !== null){
          mapInspectors()
         }
-    }, [])
+    }, [inspectors])
 
 
     return (
@@ -37,6 +37,7 @@ const AdminInspectorsList = ({inspectors, updateInspector}) => {
                     </thead>
                     <tbody>
                         {mappedInspectors}
+                        
                     </tbody>
                 </Table>: null}
             </div>
