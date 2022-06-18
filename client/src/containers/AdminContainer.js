@@ -44,6 +44,7 @@ const AdminContainer = () => {
         }
     }
 
+    //**ALL TRACTORS**/
     const fetchAllTractors = () => {
         TractorFactorService.getAllManufacturers()
         .then(data => setAllManufacturers(data));
@@ -55,6 +56,7 @@ const AdminContainer = () => {
         }
     }, [isTractorActive] )
 
+    //**ALL INSPECTORS **/
     const fetchAllInspectors = () => {
         TractorFactorService.getAllInspectors()
         .then(data => setAllInspectors(data));
@@ -66,17 +68,20 @@ const AdminContainer = () => {
         }
      }, [isInspectorsActive])
 
-
+     //**UPDATE INSPECTOR */
+     const updateInspector = (inspectorToUpdate) => {
+        TractorFactorService.updateInspector(inspectorToUpdate)
+     }
 
     return(
         <>
             <AdminNav handleComponentClick={handleComponentClick} />
 
             <section className = "admin-form-container">
-                {isInspectorActive === true ? <AdminAddInspectorForm /> : null }
+                {isInspectorActive === true ? <AdminAddInspectorForm allManufacturers={allManufacturers} /> : null }
                 {isTractorActive === true ? <AdminAddManufacturerForm /> : null }
                 {isSearchActive === true ? <AdminInspectorSearchForm /> : null }
-                {isInspectorsActive === true ? <AdminInspectorsList /> : null}
+                {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector}/> : null}
             </section>
         </>
         

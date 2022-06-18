@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminAddInspectorForm = () => {
+const AdminAddInspectorForm = ({allManufacturers}) => {
 
 
     return (
