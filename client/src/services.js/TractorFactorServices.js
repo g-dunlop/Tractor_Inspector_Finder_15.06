@@ -13,6 +13,11 @@ const TractorFactorService = {
             .then(res => res.json());
         },
 
+    getByName(name) {
+        return fetch(`http://localhost:8080/inspectors?name=${name}`)
+        .then(res => res.json())
+    },
+
     updateInspector(inspectorToUpdate) {
         return fetch(`${baseUrl}inspectors/${inspectorToUpdate.id}`,{
             method:'PUT',
@@ -33,7 +38,7 @@ const TractorFactorService = {
         },
 
     deleteInspector(id) {
-        fetch(`${baseUrl}inspectors/${id}`,{
+        return fetch(`${baseUrl}inspectors/${id}`,{
         method:'DELETE'})
         .then(res=> {
             if (res.ok) {

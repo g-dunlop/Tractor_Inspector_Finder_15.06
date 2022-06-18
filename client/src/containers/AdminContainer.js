@@ -35,6 +35,7 @@ const AdminContainer = () => {
             setIsTractorActive(false)
             setIsSearchActive(!isSearchActive)
             setIsInspectorsActive(false)
+            setAllInspectors(null)
         }
 
         else {
@@ -88,13 +89,18 @@ const AdminContainer = () => {
         
     }
 
+    const getInspectorsByName = (name) => {
+        TractorFactorService.getByName(name)
+        .then(data => setAllInspectors(data))
+    }
+
     return(
         <>
             <AdminNav handleComponentClick={handleComponentClick} />
             <section className = "admin-form-container">
                 {isInspectorActive === true ? <AdminAddInspectorForm allManufacturers={allManufacturers} /> : null }
                 {isTractorActive === true ? <AdminAddManufacturerForm /> : null }
-                {isSearchActive === true ? <AdminInspectorSearchForm /> : null }
+                {isSearchActive === true ? <AdminInspectorSearchForm getInspectorsByName={getInspectorsByName} inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} /> : null }
                 {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} /> : null}
                 
             </section>
