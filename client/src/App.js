@@ -4,6 +4,7 @@ import AppContainer from './containers/AppContainer';
 import SearchContainer from './containers/SearchContainer';
 import AdminContainer from './containers/AdminContainer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 function App() {
 

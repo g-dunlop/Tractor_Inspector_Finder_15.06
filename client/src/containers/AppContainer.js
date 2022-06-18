@@ -22,11 +22,12 @@ const AppContainer = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-                
+            <div className="App">
             <Outlet />
+            </div>
 
             <footer>
-                <h3>Footer</h3>
+                <h5>Footer</h5>
             </footer>
         </>
     )
