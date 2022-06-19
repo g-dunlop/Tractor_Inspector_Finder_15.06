@@ -1,12 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, Outlet} from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Toaster } from "react-hot-toast";
+import Landing from "../components/Landing";
 
-const AppContainer = () => {
+const AppContainer = ({isLanding, setIsLanding}) => {
 
+   
+
+    const handleLandingClick = () => {
+        setIsLanding(!isLanding)
+    }
+
+    const handleLandingFalseClick = () => {
+        setIsLanding(false)
+    }
+
+    const handleLandingTrueClick = () => {
+        setIsLanding(true)
+    }
 
     return(
         <>

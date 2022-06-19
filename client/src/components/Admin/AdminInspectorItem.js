@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Rating} from 'react-simple-star-rating';
 import AdminInspectorNotes from "./AdminInspectorNotes";
-import Notes from '../static/notes-icon.png';
+import Notes from '../../static/notes-icon.png';
 
 
 const AdminInspectorItem = ({inspector, index, handleDeleteButtonClick, handleUpdateButtonClick, updateInspector}) => {

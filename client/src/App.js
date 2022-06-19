@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import AppContainer from './containers/AppContainer';
 import SearchContainer from './containers/SearchContainer';
 import AdminContainer from './containers/AdminContainer';
+import Landing from './components/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
 
-  
-
+   
     return (
-      
       <div className="App">
         <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppContainer />} >
+            <Route path="/" element={<Landing />} />
             <Route path="/search" element={<SearchContainer />} />
             <Route path="/admin" element={<AdminContainer />} />
           </Route>

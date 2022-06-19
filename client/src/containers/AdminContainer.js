@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
-import AdminNav from '../components/AdminNav';
-import AdminAddInspectorForm from '../components/AdminAddInspectorForm';
-import AdminAddManufacturerForm from '../components/AdminAddManufacturerForm';
-import AdminInspectorSearchForm from '../components/AdminInspectorSearchForm';
-import AdminInspectorsList from '../components/AdminInspectorsList';
+import AdminNav from '../components/Admin/AdminNav';
+import AdminAddInspectorForm from '../components/Admin/AdminAddInspectorForm';
+import AdminAddManufacturerForm from '../components/Admin/AdminAddManufacturerForm';
+import AdminInspectorSearchForm from '../components/Admin/AdminInspectorSearchForm';
+import AdminInspectorsList from '../components/Admin/AdminInspectorsList';
 import TractorFactorService from "../services.js/TractorFactorServices";
 import toast, {Toaster} from 'react-hot-toast'
 
-const AdminContainer = () => {
+const AdminContainer = ({handleLandingFalseClick}) => {
 
     const [isInspectorActive, setIsInspectorActive] = useState(false)
     const [isTractorActive, setIsTractorActive] = useState(false)
