@@ -3,6 +3,8 @@ import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import toast, {Toaster} from 'react-hot-toast'
+
 
 const AdminAddManufacturerForm = () => {
 
@@ -33,7 +35,7 @@ const AdminAddManufacturerForm = () => {
         })
         .then(res=> {
             if (res.ok) {
-                setAddWorked(true)
+                toast.success("Manufacturer added")
                 setManufacturer("")
                 setTimeout(() => {
                     setAddWorked(false);

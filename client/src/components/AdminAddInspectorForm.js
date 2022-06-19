@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import React from 'react';
+import toast, {Toaster} from 'react-hot-toast'
 
 const AdminAddInspectorForm = () => {
 
@@ -158,10 +159,7 @@ const AdminAddInspectorForm = () => {
                 setInspectorLocationData(null)
                 setTractorsArray([])
                 setCheckedState(new Array(tractorObjects.length).fill(false))
-
-                setTimeout(() => {
-                    setUpdateWorked(false);
-                }, 2000)
+                toast.success("Inspector successfully added")
             } 
             throw new Error('shiiiit')
         })
@@ -197,7 +195,6 @@ const AdminAddInspectorForm = () => {
             
             <input className="button" type="submit" value="Add Inspector"></input>
         </form>
-        { updateWorked === true ? <h3>Update successful</h3> : null }
         </>
     )
 }

@@ -3,6 +3,7 @@ import {Link, Outlet} from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { Toaster } from "react-hot-toast";
 
 const AppContainer = () => {
 
@@ -23,6 +24,7 @@ const AppContainer = () => {
                 </Container>
             </Navbar>
             <div className="App">
+            <div><Toaster position="top-right"/></div>
             <Outlet />
             </div>
 

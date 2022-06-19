@@ -5,6 +5,7 @@ import AdminAddManufacturerForm from '../components/AdminAddManufacturerForm';
 import AdminInspectorSearchForm from '../components/AdminInspectorSearchForm';
 import AdminInspectorsList from '../components/AdminInspectorsList';
 import TractorFactorService from "../services.js/TractorFactorServices";
+import toast, {Toaster} from 'react-hot-toast'
 
 const AdminContainer = () => {
 
@@ -15,6 +16,8 @@ const AdminContainer = () => {
     const [allManufacturers, setAllManufacturers] = useState(null)
     const [allInspectors, setAllInspectors] = useState(null)
 
+   
+    
 
     const handleComponentClick = (component) => {
         if (component === 'add-inspector'){
@@ -82,11 +85,10 @@ const AdminContainer = () => {
 
     const handleDeleteButtonClick = (id) => {
         TractorFactorService.deleteInspector(id)
-   
+        .then(toast.success("Inspector deleted"))
         setTimeout(() => {
             fetchAllInspectors();
         }, 500)
-        
     }
 
     const getInspectorsByName = (name) => {
@@ -102,7 +104,6 @@ const AdminContainer = () => {
                 {isTractorActive === true ? <AdminAddManufacturerForm /> : null }
                 {isSearchActive === true ? <AdminInspectorSearchForm getInspectorsByName={getInspectorsByName} inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} /> : null }
                 {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} /> : null}
-                
             </section>
             
 
