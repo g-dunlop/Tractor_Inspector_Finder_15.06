@@ -1,4 +1,6 @@
-import AdminContainer from "../containers/AdminContainer";
+import React from "react";
+import toast, {Toaster} from 'react-hot-toast'
+
 
 const baseUrl = 'http://localhost:8080/'
 
@@ -50,9 +52,9 @@ const TractorFactorService = {
             console.log(error)
             });
     }
+}
 
-    }
-    
+  
 
     
 
