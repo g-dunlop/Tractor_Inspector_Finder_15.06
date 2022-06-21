@@ -13,7 +13,7 @@ const SearchContainer = () => {
     const [tractorLocationData, setTractorLocationData] = useState(null)
     const [tractorLatLong, setTractorLatLong] = useState(null)
     const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
-    const [inspectorDestinations, setInspectorDestinations] = useState(null)
+    const [inspectors, setInspectors] = useState(null)
 
     const [isError, setIsError] = useState(false)
 
@@ -90,14 +90,14 @@ const SearchContainer = () => {
     }, [tractorLatLongRanges])
 
     useEffect(() => {
-        if(inspectorDestinations !== null){
-            if(inspectorDestinations.length !== 0){
+        if(inspectors !== null){
+            if(inspectors.length !== 0){
                 getInspectorLatLong()}
             else{
                 broadenSearch()
             }
         }
-    }, [inspectorDestinations])
+    }, [inspectors])
 
     const broadenSearch = () => {
         console.log("broadening the search")
@@ -121,7 +121,7 @@ const SearchContainer = () => {
             }
             throw new Error('something went wrong')
         })
-        .then(data => setInspectorDestinations(data)) 
+        .then(data => setInspectors(data)) 
         .catch((error) => {
             console.log(error)
         });
@@ -133,7 +133,7 @@ const SearchContainer = () => {
 
 
     const getInspectorLatLong = () => {
-        const inspectorLatAndLong = inspectorDestinations.map((inspector) => {
+        const inspectorLatAndLong = inspectors.map((inspector) => {
         return {lat:inspector.lat, lng: inspector.lng}
     })
     setInspectorLatLong(inspectorLatAndLong)
@@ -148,7 +148,7 @@ const SearchContainer = () => {
     return(
         <>
             {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button onClick ={handleNewSearchClick} className="button new-search-button" >New Search</button> }
-            {tractorLocationData !== null ? <Map tractorLatLong={tractorLatLong}/> : null }
+            {inspectorLatLong !== null ? <Map tractorLatLong={tractorLatLong} inspectors={inspectors} inspectorLatAndLong={inspectorLatLong}/> : null }
         </>
     )
 
