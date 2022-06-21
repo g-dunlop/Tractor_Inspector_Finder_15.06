@@ -20,7 +20,7 @@ const AdminInspectorNotes = ({inspector, handleNotes, handleNotesClick}) => {
 
     return(
         <div className="inspector-notes-container">
-            <h3> Notes</h3>
+           
             <form onSubmit={handleSave}>
                 <textarea onChange={updateNotes} height="250px" width="150px" value={notes} />
                 <div className = "notes-buttons">

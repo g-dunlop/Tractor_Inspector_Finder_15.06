@@ -53,8 +53,8 @@ const AdminInspectorItem = ({inspector, index, handleDeleteButtonClick, handleUp
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
                 <td><div className="table-buttons">
-                    <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" /></button></div></td>
-                    {isNotes ? <AdminInspectorNotes handleNotesClick={handleNotesClick} inspector={inspector} index={index} handleNotes={handleNotes} /> : null}
+                    <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" /></button></div>
+                    {isNotes ? <AdminInspectorNotes handleNotesClick={handleNotesClick} inspector={inspector} index={index} handleNotes={handleNotes} /> : null}</td>
                 <button className="button small" onClick={handleUpdate} value={inspector.id}>Update</button><button className="button small" onClick={handleDelete} value={inspector.id}>Delete</button>
             </tr>
         </>

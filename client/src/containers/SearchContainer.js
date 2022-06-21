@@ -3,18 +3,17 @@ import TractorFactorService from "../services.js/TractorFactorServices";
 import toast, {Toaster} from 'react-hot-toast'
 import TractorLocationForm from "../components/Search/TractorLocationForm";
 import Map from "../components/Search/Map";
+import Button from 'react-bootstrap/Button';
 
 const SearchContainer = () => {
     const [isSearch, setIsSearch] = useState(true)
     const [tractorObjects, setTractorObjects] = useState(null)
     const [searchPostCode, setSearchPostCode] = useState(null)
     const [manufacturer, setManufacturer] = useState(null)
-
     const [tractorLocationData, setTractorLocationData] = useState(null)
     const [tractorLatLong, setTractorLatLong] = useState(null)
     const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
     const [inspectors, setInspectors] = useState(null)
-
     const [isError, setIsError] = useState(false)
 
 
@@ -144,10 +143,12 @@ const SearchContainer = () => {
         setIsSearch(true)
         setInspectorLatLong(null)
     }
+
+   
     
     return(
         <>
-            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button onClick ={handleNewSearchClick} className="button new-search-button" >New Search</button> }
+            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <Button variant="dark" onClick ={handleNewSearchClick} className="button new-search-button" >New Search</Button> }
             {inspectorLatLong !== null ? <Map tractorLatLong={tractorLatLong} inspectors={inspectors} inspectorLatAndLong={inspectorLatLong}/> : null }
         </>
     )
