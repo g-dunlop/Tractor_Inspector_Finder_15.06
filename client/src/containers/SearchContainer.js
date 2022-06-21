@@ -2,18 +2,23 @@ import React, {useEffect, useState} from "react";
 import TractorFactorService from "../services.js/TractorFactorServices";
 import toast, {Toaster} from 'react-hot-toast'
 import TractorLocationForm from "../components/Search/TractorLocationForm";
+import Map from "../components/Search/Map";
 
 const SearchContainer = () => {
     const [isSearch, setIsSearch] = useState(true)
     const [tractorObjects, setTractorObjects] = useState(null)
     const [searchPostCode, setSearchPostCode] = useState(null)
     const [manufacturer, setManufacturer] = useState(null)
+
     const [tractorLocationData, setTractorLocationData] = useState(null)
+    const [tractorLatLong, setTractorLatLong] = useState(null)
+    const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
+    const [inspectorDestinations, setInspectorDestinations] = useState(null)
 
     const [isError, setIsError] = useState(false)
 
 
-
+    //**LOADING TRACTOR NAMES**//
     const getManufacturerObjects = () => {
         TractorFactorService.getAllManufacturers()
         .then(data => {setTractorObjects(data)})
@@ -23,6 +28,7 @@ const SearchContainer = () => {
         getManufacturerObjects()
     }, [])
 
+    //**HANDLING FORM INPUT  **/
     const handleSearchPostCode = (postcode) => {
         setSearchPostCode(postcode)
     }
@@ -31,6 +37,8 @@ const SearchContainer = () => {
         setManufacturer(manufacturer)
     }
 
+
+    //**CALLING POSTCODE API AND SAVING RETURNED LAT AND LONG */
     const getTractorLatAndLng = () => {
         return fetch(`http://api.postcodes.io/postcodes/${searchPostCode}`)
         .then(res => {
@@ -55,15 +63,92 @@ const SearchContainer = () => {
         }
     }, [searchPostCode, manufacturer])
 
-    // const handleNewSearchClick = () =>{
-    //     setIsSearch(true)
-    //     setInspectorLatLong(null)
-    // }
+    //**FORMATTING API RETURN FOR GOOGLE API **/
+    let tractorLatAndLong;
+    useEffect(() => {
+        if (tractorLocationData !== null){
+            prepareDataForFetchRequest()
+            tractorLatAndLong = {lat: tractorLocationData.result.latitude, lng: tractorLocationData.result.longitude}
+            setTractorLatLong(tractorLatAndLong)
+        }
+    }, [tractorLocationData])
+
+    //**LIMITING RANGE FOR DB FETCH REQUEST **/
+    const prepareDataForFetchRequest = () => {
+        setTractorLatLongRanges({
+            minLat: tractorLocationData.result.latitude-1.0,
+            maxLat: tractorLocationData.result.latitude+1.0,
+            minLng: tractorLocationData.result.longitude-1.0,
+            maxLng: tractorLocationData.result.longitude+1.0
+        })
+    }
+
+    useEffect(() => {
+        if(tractorLatLongRanges!==null){
+        fetchInspectors()
+        }
+    }, [tractorLatLongRanges])
+
+    useEffect(() => {
+        if(inspectorDestinations !== null){
+            if(inspectorDestinations.length !== 0){
+                getInspectorLatLong()}
+            else{
+                broadenSearch()
+            }
+        }
+    }, [inspectorDestinations])
+
+    const broadenSearch = () => {
+        console.log("broadening the search")
+        if(tractorLatLongRanges.minLat > tractorLocationData.result.latitude-5){
+            setTractorLatLongRanges({
+                minLat: tractorLatLongRanges.minLat-1.0,
+                maxLat: tractorLatLongRanges.maxLat+1.0,
+                minLng: tractorLatLongRanges.minLng-1.0,
+                maxLng: tractorLatLongRanges.maxLng+1.0
+            })
+        } else{
+            toast.error("No results")
+        }
+    }
+
+    const fetchInspectors = () => {
+        fetch(`http://localhost:8080/inspectors?manufacturer=${manufacturer}&minLat=${tractorLatLongRanges.minLat}&maxLat=${tractorLatLongRanges.maxLat}&minLng=${tractorLatLongRanges.minLng}&maxLng=${tractorLatLongRanges.maxLng}`)
+        .then(res => {
+            if (res.ok){
+            return res.json();
+            }
+            throw new Error('something went wrong')
+        })
+        .then(data => setInspectorDestinations(data)) 
+        .catch((error) => {
+            console.log(error)
+        });
+    }
+    
+    const [inspectorLatLong, setInspectorLatLong] = useState(null)
+
+    
+
+
+    const getInspectorLatLong = () => {
+        const inspectorLatAndLong = inspectorDestinations.map((inspector) => {
+        return {lat:inspector.lat, lng: inspector.lng}
+    })
+    setInspectorLatLong(inspectorLatAndLong)
+    setIsSearch(false)
+    }
+
+    const handleNewSearchClick = () =>{
+        setIsSearch(true)
+        setInspectorLatLong(null)
+    }
     
     return(
         <>
-            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button className="button new-search-button" >New Search</button> }
-
+            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <button onClick ={handleNewSearchClick} className="button new-search-button" >New Search</button> }
+            {tractorLocationData !== null ? <Map tractorLatLong={tractorLatLong}/> : null }
         </>
     )
 
