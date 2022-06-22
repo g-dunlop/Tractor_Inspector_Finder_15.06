@@ -144,8 +144,9 @@ const SearchContainer = () => {
     
     return(
         <>
-            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <Button variant="dark" onClick ={handleNewSearchClick} className="button new-search-button" >New Search</Button> }
             {inspectorLatLong !== null ? <Map tractorLatLong={tractorLatLong} inspectors={inspectors} inspectorLatAndLong={inspectorLatLong}/> : null }
+            {isSearch === true ? <TractorLocationForm tractors={tractorObjects} handleSearchPostCode={handleSearchPostCode} handleTractorManufacturer={handleTractorManufacturer}/> : <Button variant="outline-success" onClick ={handleNewSearchClick} className="button new-search-button" >New Search</Button> }
+            
         </>
     )
 

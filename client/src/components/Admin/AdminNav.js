@@ -18,9 +18,9 @@ const AdminNav = ({handleComponentClick}) => {
 
     return(
 
-        <>
-            <h2> Admin Dashboard</h2>
-            <p>Search and edit the tractor and inspector databases from here</p>
+        <section className="admin-container"> 
+            <h2 className="admin-header"> Admin Dashboard</h2>
+            <p className="admin-intro">Search and edit the tractor and inspector databases from here</p>
             <Row xs={1} md={2} className="g-4">
                 <Col>
                     <Card className="text-center" bg="success" text="light">
@@ -63,7 +63,7 @@ A list of all Tractor Inspectors currently held in the database                 
                     </Card>
                 </Col>
             </Row>
-        </>
+        </section>
     )
 
 }

@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel'
+import Button from 'react-bootstrap/Button';
 
 
 const TractorLocationForm = ({handleSearchPostCode, tractors, handleTractorManufacturer}) => {
@@ -37,24 +40,34 @@ const TractorLocationForm = ({handleSearchPostCode, tractors, handleTractorManuf
     }
 
     return (
-        <>
+        <section className="search-form-container">
 
             <h2>Search For An Inspector</h2>
 
-            <form className="home-form" onSubmit={handleSubmit}>
-                <label  htmlFor="tractor">Manufacturer: </label> <br></br>
-                <select className="home-form-input" onChange={handleChange} name="tractors" id="tractors">
+            <Form className="search-form" onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label  htmlFor="tractor">Manufacturer: </Form.Label> 
+                <Form.Select aria-label="Default select example" className="home-form-input" onChange={handleChange} name="tractors" id="tractors">
+                    <option >Select a manufacturer</option>
                     {mappedTractors}
-                </select>
-                <br></br>
-                <label  htmlFor="postcode">Postcode: </label> <br></br>
-                <input className="home-form-input" onChange={handlePostcodeChange} type="text" name="postcode" />
-                <br></br>
-                <input className="button" type="submit" value="Search" />
+                </Form.Select>
+                </Form.Group>
+                
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                    <FloatingLabel
+                        controlId="floatingInput"
+                        label="Postcode"
+                        className="mb-3"
+                    >
+                     <Form.Control className="home-form-input" onChange={handlePostcodeChange} type="text" name="postcode" placeholder="Postcode" />
+                    </FloatingLabel>
+                </Form.Group>
+               
+                <Button variant="success" className="button" type="submit" value="Search">Search</Button>
 
-            </form>
+            </Form>
             
-        </>
+        </section>
     )
 }
 

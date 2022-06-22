@@ -4,6 +4,7 @@ import config from '../../config';
 import Tractor from '../../static/tractor (3).png';
 import { Rating } from 'react-simple-star-rating';
 import SearchInspectorsList from './SearchInspectorsList';
+import Button from 'react-bootstrap/Button';
 
 const containerStyle = {
   width: '400px',
@@ -94,14 +95,14 @@ function MyComponent({tractorLatLong, inspectors, inspectorLatAndLong}) {
     }
 
   return (
-    <>
-         <div className="map-info">
-                    <h3 className="map-info-item"> {inspectors.length} results found:   </h3>showing {count === 1?<h3 className="map-info-item"> {count} inspector within {searchRadius} miles</h3> : <h3 className="map-info-item"> {count} inspectors within {searchRadius} miles</h3>}
-                </div>
-                <div className="button-container">
-                    <button className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</button>
-                    <button className="button map-button" onClick={handleDecreaseClick}>Decrease Search Radius</button>
-                </div>
+    <section className="map">
+        <div className="map-info">
+            <h4 className="map-info-item"> {inspectors.length} results found:   </h4>{count === 1?<h5 className="map-info-item"> Showing {count} inspector within {searchRadius} miles</h5> : <h5 className="map-info-item"> Showing {count} inspectors within {searchRadius} miles</h5>}
+        </div>
+        <div className="button-container">
+            <Button variant="outline-dark" className="button map-button" onClick={handleIncreaseClick}>Increase Search Radius</Button>
+            <Button variant="outline-dark" className="button map-button" onClick={handleDecreaseClick}>Decrease Search Radius</Button>
+        </div>
         <LoadScript
         googleMapsApiKey = {config.API_KEY}
         >
@@ -155,7 +156,7 @@ function MyComponent({tractorLatLong, inspectors, inspectorLatAndLong}) {
         </LoadScript>
 
         <SearchInspectorsList searchRadius = {searchRadius} inspectors = {inspectorsWithDistance} count={count}/>
-    </>
+    </section>
   )
 }
 

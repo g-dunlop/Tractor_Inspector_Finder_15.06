@@ -11,17 +11,24 @@ const AppContainer = () => {
 
    let navigate = useNavigate()
 
+
     return(
         <>
-            <Navbar bg="light" expand="lg">
-                <Container>
+            <Navbar bg="success" variant="dark" expand="lg" className="gap-3 px-3">
+                <Container >
                     <Navbar.Brand href="/">TractorFactor</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav" >
-                        <Nav className="me-auto">
+                    <Navbar.Collapse>
+                        <Nav variant="pills success"  className="flex-grow-1 justify-content-end"  >
+                            <Nav.Item>
                             <Nav.Link onClick = {() => {navigate("/")}} href="/">Home</Nav.Link>
-                            <Nav.Link onClick = {() => {navigate("/search")}} href="search">Search Inspectors</Nav.Link>
-                            <Nav.Link onClick = {() => {navigate("/admin")}} href="admin">Admin</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                            <Nav.Link  onClick = {() => {navigate("/search")}} href="search">Search Inspectors</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                            <Nav.Link  onClick = {() => {navigate("/admin")}} href="admin">Admin</Nav.Link>
+                            </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

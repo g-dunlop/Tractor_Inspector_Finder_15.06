@@ -23,9 +23,9 @@ const SearchInspectorsList = ({inspectors, count, searchRadius, updateInspector,
     }, [inspectors, count])
 
 
-    return (
+    return ( 
         <>
-            <h3>Inspectors:</h3>
+            <h4 className="inspector-list-header">Inspectors:</h4>
             <div className="inspector-information">
              {mappedInspectors !== null ? 
                 <Table responsive striped bordered hover>

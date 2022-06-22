@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
 import React from 'react';
-import Form from 'react-bootstrap/Form'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import toast from 'react-hot-toast'
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import toast from 'react-hot-toast';
+import Button from 'react-bootstrap/Button';
+
 
 
 const AdminAddManufacturerForm = () => {
@@ -49,19 +50,23 @@ const AdminAddManufacturerForm = () => {
     }
 
     return(
-        <Form id="add-m" className="add-tractor-form" onSubmit={handleSubmit}>
-            <h3>Add Tractor</h3>
-            <Form.Group as= {Row} className="mb-3" controlId="exampleForm.ControlInput1">
-            <Col>
-            <Form.Control sm = {7} onChange={handleChange} type="text" name="manufacturer" value={manufacturer} placeholder="manufacturer" required></Form.Control>
-            </Col>
-            <Col>
-            <Form.Control sm ={3} className="button" type="submit" value="add tractor"></Form.Control>
-            </Col>
+        <section className="search-form-container">
+        <h3>Add a Tractor Manufacturer</h3>
+        <Form id="add-m" className="search-form" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                    controlId="floatingInput"
+                    label="Manufacturer"
+                    className="mb-3"
+                >
+                    <Form.Control className="home-form-input" onChange={handleChange} type="text" name="manufacturer" placeholder="manufacturer" />
+                </FloatingLabel>
             </Form.Group>
-            { addWorked === true ? <h3>Successfully added!</h3> : null}
+            
+            <Button variant="success" className="button" type="submit" value="add-manufacturer">Add Manufacturer</Button>
 
         </Form>
+        </section>
     )
 }
 
