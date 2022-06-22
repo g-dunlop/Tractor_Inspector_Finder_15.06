@@ -21,7 +21,7 @@ const AdminInspectorsList = ({inspectors, updateInspector, handleDeleteButtonCli
 
     return (
         <>
-            <h4  id="all" >Inspectors:</h4>
+            <h3 className="inspectors-header"  id="all" >Inspectors:</h3>
             <div  className="inspector-information">
              {mappedInspectors !== null ? 
                 <Table  responsive striped bordered hover>
