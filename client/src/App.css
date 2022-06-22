@@ -1,7 +1,7 @@
 .App {
   text-align: center;
+  min-height:90vh;
 }
-
 
 
 .landing-page{
@@ -38,7 +38,7 @@
 .search-form{
   margin:1rem;
   width:50%;
-  background-color:rgb(249, 246, 241);
+  background-color:rgba(222, 220, 216, 0.489);
   padding:1rem;
 }
 
@@ -59,7 +59,7 @@
   margin-bottom:0.5rem;
 }
 .new-search-button{
-  margin:2rem;
+  margin:1rem;
 }
 
 .map-button{
@@ -74,6 +74,7 @@
 
 .admin-container{
   padding:1rem;
+  margin-bottom:1rem;
 }
 
 .admin-header{
@@ -86,4 +87,18 @@
 
 .inspectors-header{
   margin:1rem;
+}
+
+.add-inspector-form{
+  width:50%;
+}
+
+.admin-button{
+  margin:1rem;
+}
+
+
+
+.admin-update-container{
+  padding-top:2rem;
 }

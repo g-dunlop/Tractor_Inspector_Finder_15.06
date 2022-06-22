@@ -13,7 +13,7 @@ const AppContainer = () => {
 
 
     return(
-        <>
+        <div className="app-container">
             <Navbar bg="success" variant="dark" expand="lg" className="gap-3 px-3">
                 <Container >
                     <Navbar.Brand href="/">TractorFactor</Navbar.Brand>
@@ -38,10 +38,12 @@ const AppContainer = () => {
             <Outlet />
             </div>
 
-            <footer>
-                <h5>Footer</h5>
-            </footer>
-        </>
+            <Navbar bg="success" variant="dark" expand="lg" className="footer gap-3 px-3">
+            <Container >
+                    <Navbar.Brand href="/">TractorFactor</Navbar.Brand>
+                </Container>
+                </Navbar>
+        </div>
     )
 }
 export default AppContainer;

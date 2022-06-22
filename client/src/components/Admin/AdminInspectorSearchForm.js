@@ -32,10 +32,8 @@ const AdminInspectorSearchForm = ({getInspectorsByName, inspectors, updateInspec
                     label="Enter name of tractor inspector"
                     className="mb-3"
                 >
-                    
                     <Form.Control size ='lg' onChange={handleChange} type="search" placeholder="Enter name of tractor inspector" ></Form.Control>
                 </FloatingLabel>
-                   
                 </Form.Group>
             </Form>
 

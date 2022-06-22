@@ -1,6 +1,10 @@
 import {useState, useEffect} from 'react';
 import React from 'react';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
+import Form from 'react-bootstrap/Form';
+import { FloatingLabel } from 'react-bootstrap';
+import {FormCheck} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button'
 
 const AdminAddInspectorForm = () => {
 
@@ -64,7 +68,7 @@ const AdminAddInspectorForm = () => {
 
     const mapTractorManufacturers = () => {
         const tractorMapping = tractorObjects.map((tractor, index) => {
-            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></input></>
+            return  <Form.Check inline className="check-item"><FormCheck.Label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</FormCheck.Label> <FormCheck.Input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></FormCheck.Input></Form.Check>
         })
         setTractorMap(tractorMapping)
     }
@@ -180,22 +184,63 @@ const AdminAddInspectorForm = () => {
     
 
     return(
-        <>
-        <form id="add-i" className="add-inspector-form" onSubmit={handleSubmit}>
-            <h3>Add Inspector</h3>
-            <input onChange={handleChange} type="text"  value={name} name="name" placeholder="name" required></input>
-            <input onChange={handleChange} type="text"  value={postcode} name="postcode" placeholder="postcode" required></input>
-            <input onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></input>
-            <input onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></input>
-            <input onChange={handleChange} type="email" value={email} name="email" placeholder="email" required></input>
+        <section id="add-i" className="search-form-container"> 
+            <h3>Add a New Inspector</h3>
+        <Form  className="search-form" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                        controlId="floatingInput"
+                        label="Name"
+                        className="mb-3"
+                    >
+                    <Form.Control onChange={handleChange} type="text"  value={name} name="name" placeholder="Name" required></Form.Control>
+                </FloatingLabel>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                        controlId="floatingInput"
+                        label="Postcode"
+                        className="mb-3"
+                    >
+                    <Form.Control onChange={handleChange} type="text"  value={postcode} name="postcode" placeholder="postcode" required></Form.Control>
+                </FloatingLabel>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                        controlId="floatingInput"
+                        label="Address"
+                        className="mb-3"
+                    >
+                    <Form.Control onChange={handleChange} type="text" value={address} name="address" placeholder="address" required></Form.Control>
+                </FloatingLabel>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                        controlId="floatingInput"
+                        label="Phone Number"
+                        className="mb-3"
+                    >
+                    <Form.Control onChange={handleChange} type="text" value={phoneNumber} name="phoneNumber" placeholder="phone number" required></Form.Control>
+                </FloatingLabel>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                <FloatingLabel
+                        controlId="floatingInput"
+                        label="Email address"
+                        className="mb-3"
+                    >
+                    <Form.Control onChange={handleChange} type="email" value={email} name="email" placeholder="email" required></Form.Control>
+                </FloatingLabel>
+            </Form.Group>
+
+            <h5>Can inspect:</h5>
             <fieldset>
                 {tractorMap}
             </fieldset>
-            <br></br>
             
-            <input className="button" type="submit" value="Add Inspector"></input>
-        </form>
-        </>
+            <Button variant="success" className="admin-button" type="submit" value="Add Inspector">Add Inspector</Button>
+        </Form>
+        </section>
     )
 }
 

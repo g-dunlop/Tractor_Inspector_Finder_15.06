@@ -4,6 +4,10 @@ import TractorFactorService from "../services.js/TractorFactorServices";
 import {useParams, useNavigate} from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import { FloatingLabel } from 'react-bootstrap';
+import {FormCheck} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button'
 
 
 const AdminUpdateContainer = () => {
@@ -62,9 +66,10 @@ const AdminUpdateContainer = () => {
         
         const tractorMapping = manufacturers.map((tractor, index) => {
             if (tractor.id === inspectorToUpdate.tractorIds[0]) {
-                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></input></>
+                return  <Form.Check inline className="check-item"><FormCheck.Label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</FormCheck.Label> <FormCheck.Input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></FormCheck.Input></Form.Check>
+
             } else{
-                return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} key={tractor.id} type="checkbox"  value={tractor.id}></input></>
+                return  <Form.Check inline className="check-item"><FormCheck.Label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</FormCheck.Label> <FormCheck.Input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></FormCheck.Input></Form.Check>
             }
         })
         
@@ -110,12 +115,12 @@ const AdminUpdateContainer = () => {
     //put
 
     return(
-        <>
-            <h2>Update</h2>
+        <section className="admin-update-container">
+            <h3>Update Inspector</h3>
             {inspectorToUpdate !== null ? <AdminUpdateInspectorForm inspectorToUpdate={inspectorToUpdate} tractorsArray={tractorsArray} updateInspectorInDb={updateInspectorInDb} mappedManufacturers={mappedManufacturers} /> : null}
-            <Nav.Link href="admin"><button onClick = {() => {navigate("/admin")}}>Back to Admin Page</button></Nav.Link>
+            <Nav.Link href="admin"><Button variant="outline-success" onClick = {() => {navigate("/admin")}}>Back to Admin Page</Button></Nav.Link>
 
-        </>
+        </section>
         
     )
 }

@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Rating} from 'react-simple-star-rating';
 import AdminInspectorNotes from "./AdminInspectorNotes";
 import Notes from '../../static/notes-icon.png';
-import Nav from 'react-bootstrap/Nav'
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 
 
 const AdminInspectorItem = ({inspector, index, handleDeleteButtonClick, handleUpdateButtonClick, updateInspector}) => {
@@ -56,7 +57,7 @@ const AdminInspectorItem = ({inspector, index, handleDeleteButtonClick, handleUp
                 <td><div className="table-buttons">
                     <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" alt="a notebook" /></button></div>
                     {isNotes ? <AdminInspectorNotes handleNotesClick={handleNotesClick} inspector={inspector} index={index} handleNotes={handleNotes} /> : null}</td>
-                    <Nav.Link href={`admin/${inspector.id}`}><button className="button small" onClick={handleUpdate} value={inspector.id}>Update</button></Nav.Link><button className="button small" onClick={handleDelete} value={inspector.id}>Delete</button>
+                   <td><Nav.Link href={`admin/${inspector.id}`}><Button  size="sm" onClick={handleUpdate} value={inspector.id}>Update</Button></Nav.Link><Button variant="danger" size="sm"  onClick={handleDelete} value={inspector.id}>Delete</Button></td> 
             </tr>
         </>
     )
