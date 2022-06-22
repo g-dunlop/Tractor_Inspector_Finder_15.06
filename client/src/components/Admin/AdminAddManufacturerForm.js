@@ -3,7 +3,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import toast, {Toaster} from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
 
 const AdminAddManufacturerForm = () => {
@@ -49,7 +49,7 @@ const AdminAddManufacturerForm = () => {
     }
 
     return(
-        <Form className="add-tractor-form" onSubmit={handleSubmit}>
+        <Form id="add-m" className="add-tractor-form" onSubmit={handleSubmit}>
             <h3>Add Tractor</h3>
             <Form.Group as= {Row} className="mb-3" controlId="exampleForm.ControlInput1">
             <Col>

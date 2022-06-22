@@ -8,8 +8,8 @@ const SearchInspectorsItem = ({inspector, index, letter}) => {
 
     const [rating, setRating] = useState(inspector.rating);
     const [inspectorToUpdate, setInspectorToUpdate] = useState(null)
-    const [inspectorEmail, setInspectorEmail] = useState(`mailto:${inspector.email}`)
-    const [inspectorPhoneNumber, setInspectorPhoneNumber] = useState(`tel:${inspector.phoneNumber}`)
+    const [inspectorEmail] = useState(`mailto:${inspector.email}`)
+    const [inspectorPhoneNumber] = useState(`tel:${inspector.phoneNumber}`)
     const [isNotes, setIsNotes] = useState(false);
 
 
@@ -67,7 +67,7 @@ const SearchInspectorsItem = ({inspector, index, letter}) => {
                 <td><a href={inspectorEmail}>{inspector.email}</a></td>
                 <td><Rating onClick={handleRating} allowHalfIcon={true} size={20} ratingValue={rating} /></td>
                 <td><div className="table-buttons">
-                    <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" /></button></div>
+                    <button className="notes" onClick={handleNotesClick}><img src={Notes} height="33px" width="40px" alt="a notebook" /></button></div>
                     {isNotes ? <InspectorNotes handleNotesClick={handleNotesClick} inspector={inspector} index={index} handleNotes={handleNotes} /> : null}</td>
                 
                     </tr>

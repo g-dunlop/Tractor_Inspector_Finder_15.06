@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import TractorFactorService from "../services.js/TractorFactorServices";
-import toast, {Toaster} from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import TractorLocationForm from "../components/Search/TractorLocationForm";
 import Map from "../components/Search/Map";
 import Button from 'react-bootstrap/Button';
@@ -14,7 +14,7 @@ const SearchContainer = () => {
     const [tractorLatLong, setTractorLatLong] = useState(null)
     const [tractorLatLongRanges, setTractorLatLongRanges] = useState(null)
     const [inspectors, setInspectors] = useState(null)
-    const [isError, setIsError] = useState(false)
+    
 
 
     //**LOADING TRACTOR NAMES**//
@@ -49,10 +49,6 @@ const SearchContainer = () => {
         .then(data => setTractorLocationData(data)) // listening for state change, triggers when not null
         .catch((error) => {
             toast.error("Invalid postcode")
-            setIsError(true)
-                setTimeout(() => {
-                    setIsError(false);
-                }, 2000)
         })
     }
 

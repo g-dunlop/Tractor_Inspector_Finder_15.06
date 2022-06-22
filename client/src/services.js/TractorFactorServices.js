@@ -1,5 +1,4 @@
-import React from "react";
-import toast, {Toaster} from 'react-hot-toast'
+
 
 
 const baseUrl = 'http://localhost:8080/'
@@ -14,6 +13,11 @@ const TractorFactorService = {
             return fetch(baseUrl+"inspectors")
             .then(res => res.json());
         },
+
+    getInspectorById(id){
+        return fetch(baseUrl+`inspectors/${id}`)
+        .then(res => res.json())
+    },
 
     getByName(name) {
         return fetch(`http://localhost:8080/inspectors?name=${name}`)

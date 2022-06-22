@@ -1,26 +1,15 @@
 import React, {useState} from "react";
-import {Link, Outlet} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Toaster } from "react-hot-toast";
-import Landing from "../components/Landing";
+import {useNavigate} from 'react-router-dom';
 
-const AppContainer = ({isLanding, setIsLanding}) => {
 
-   
+const AppContainer = () => {
 
-    const handleLandingClick = () => {
-        setIsLanding(!isLanding)
-    }
-
-    const handleLandingFalseClick = () => {
-        setIsLanding(false)
-    }
-
-    const handleLandingTrueClick = () => {
-        setIsLanding(true)
-    }
+   let navigate = useNavigate()
 
     return(
         <>
@@ -30,9 +19,9 @@ const AppContainer = ({isLanding, setIsLanding}) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="search">Search Inspectors</Nav.Link>
-                            <Nav.Link href="admin">Admin</Nav.Link>
+                            <Nav.Link onClick = {() => {navigate("/")}} href="/">Home</Nav.Link>
+                            <Nav.Link onClick = {() => {navigate("/search")}} href="search">Search Inspectors</Nav.Link>
+                            <Nav.Link onClick = {() => {navigate("/admin")}} href="admin">Admin</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -23,7 +23,7 @@ const AdminInspectorSearchForm = ({getInspectorsByName, inspectors, updateInspec
     return (
         <>
             <h3>Search:</h3>
-            <Form className="inspector-search-form">
+            <Form id="search" className="inspector-search-form">
                 <Form.Group as= {Row} className="mb-3" controlId="exampleForm.ControlInput1">
                     
                     

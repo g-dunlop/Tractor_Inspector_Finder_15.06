@@ -5,7 +5,6 @@ import Tractor from '../../static/tractor (3).png';
 import { Rating } from 'react-simple-star-rating';
 import SearchInspectorsList from './SearchInspectorsList';
 
-
 const containerStyle = {
   width: '400px',
   height: '400px'
@@ -22,8 +21,6 @@ function MyComponent({tractorLatLong, inspectors, inspectorLatAndLong}) {
   const [activeMarkerEmail, setActiveMarkerEmail] = useState(null)
   const [activeMarkerPhoneNumber, setActiveMarkerPhoneNumber] = useState(null)
   const [count, setCount] = useState(0)
-
-
 
     useEffect(() => {
         if (distanceMatrixResponse !== null){
@@ -157,7 +154,7 @@ function MyComponent({tractorLatLong, inspectors, inspectorLatAndLong}) {
         </GoogleMap>
         </LoadScript>
 
-        <SearchInspectorsList searchRadius = {searchRadius} inspectors = {inspectorsWithDistance}/>
+        <SearchInspectorsList searchRadius = {searchRadius} inspectors = {inspectorsWithDistance} count={count}/>
     </>
   )
 }

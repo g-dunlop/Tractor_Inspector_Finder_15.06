@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import React from 'react';
-import toast, {Toaster} from 'react-hot-toast'
+import toast from 'react-hot-toast'
 
 const AdminAddInspectorForm = () => {
 
@@ -17,7 +17,7 @@ const AdminAddInspectorForm = () => {
     const [tractorObjects, setTractorObjects] = useState(null)
     const [tractorMap, setTractorMap] = useState(null)
 
-    const [updateWorked, setUpdateWorked] = useState(false)
+  
 
     const [checkedState, setCheckedState] = useState(null)
 
@@ -64,7 +64,7 @@ const AdminAddInspectorForm = () => {
 
     const mapTractorManufacturers = () => {
         const tractorMapping = tractorObjects.map((tractor, index) => {
-            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox" name={tractor.manufacturer} value={tractor.id}></input></>
+            return  <><label htmlFor="manufacturer" name={tractor.manufacturer}>{tractor.manufacturer}</label> <input onChange={() => handleCheckboxChange(index)} checked={checkedState[index]} name={tractor.id} id={index} key={index} type="checkbox"  value={tractor.id}></input></>
         })
         setTractorMap(tractorMapping)
     }
@@ -150,7 +150,7 @@ const AdminAddInspectorForm = () => {
         })
         .then(res=> {
             if (res.ok) {
-                setUpdateWorked(true)
+               
                 setName("")
                 setPostcode("")
                 setAddress("")
@@ -181,7 +181,7 @@ const AdminAddInspectorForm = () => {
 
     return(
         <>
-        <form className="add-inspector-form" onSubmit={handleSubmit}>
+        <form id="add-i" className="add-inspector-form" onSubmit={handleSubmit}>
             <h3>Add Inspector</h3>
             <input onChange={handleChange} type="text"  value={name} name="name" placeholder="name" required></input>
             <input onChange={handleChange} type="text"  value={postcode} name="postcode" placeholder="postcode" required></input>

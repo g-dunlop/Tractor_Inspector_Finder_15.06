@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import SearchInspectorsItem from './SearchInspectorsItem';
 import Table from 'react-bootstrap/Table';
 
-const SearchInspectorsList = ({inspectors, searchRadius, updateInspector, handleDeleteButtonClick, handleUpdateButtonClick, isDeleteToast}) => {
+const SearchInspectorsList = ({inspectors, count, searchRadius, updateInspector, handleDeleteButtonClick, handleUpdateButtonClick, isDeleteToast}) => {
 
     const [mappedInspectors, setMappedInspectors] = useState(null)
 
@@ -11,7 +11,6 @@ const SearchInspectorsList = ({inspectors, searchRadius, updateInspector, handle
             if (inspector.distance < searchRadius){
                 let letter = String.fromCharCode("A".charCodeAt(0) + index)
                 return <SearchInspectorsItem inspector={inspector} key={index} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick} handleUpdateButtonClick={handleUpdateButtonClick} letter={letter} />
-
             }
         })
         setMappedInspectors(mappedArray)
@@ -21,7 +20,7 @@ const SearchInspectorsList = ({inspectors, searchRadius, updateInspector, handle
         if (inspectors !== null){
          mapInspectors()
         }
-    }, [inspectors])
+    }, [inspectors, count])
 
 
     return (
