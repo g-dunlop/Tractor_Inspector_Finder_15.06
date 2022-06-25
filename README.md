@@ -83,35 +83,6 @@
    </tr>
   </table>
   
-  <h2>Screenshots</h2>
-  <p>For a short video preview of the app, please visit my  <a href="https://g-dunlop.github.io/g-dunlop-portfolio-website/">portfolio site</a>:
-   <table>
-   <tr>
-    <td>
-      <img width="958" alt="tf_1" src="https://user-images.githubusercontent.com/88304522/175780127-6392aad8-4916-49dc-97c8-3859cc746c5d.PNG">
-    </td>
-    <td>
-       <img width="959" alt="tf_2" src="https://user-images.githubusercontent.com/88304522/175780140-2bfb45de-6a43-49e7-ac79-f150f2638f5a.PNG">
-    </td>
-     <td>
-     <img width="956" alt="tf_3" src="https://user-images.githubusercontent.com/88304522/175780142-9303fa4f-56a2-4d9a-b2f6-ba117355f45e.PNG">
-    </td>
-   </tr>
-    
-   <tr>
-     <td>
-        <img width="954" alt="tf_4" src="https://user-images.githubusercontent.com/88304522/175780148-dc6c451b-7b02-4f83-a3f2-f5690d92a488.PNG">
-    </td>
-    <td>
-        <img width="959" alt="tf_5" src="https://user-images.githubusercontent.com/88304522/175780153-4e3396e4-5f47-4b6a-9e65-b33d2abc8657.PNG">
-    </td>
-    <td>
-       <img width="955" alt="tf_6" src="https://user-images.githubusercontent.com/88304522/175780160-cde17b18-4b30-4f91-b9d6-024df0d5e71c.PNG">
-    </td>
-   </tr>
-  </table>
-
-  
   
   <h2>How to Run the App</h2>
   <ul>
