@@ -46,10 +46,10 @@
       <img width="1011" alt="MSCW" src="https://user-images.githubusercontent.com/88304522/175779739-38b86ae5-8403-4179-bac2-4f5af6cbbda9.PNG">
     </td>
     <td>
-        <img width="383" alt="Class" src="https://user-images.githubusercontent.com/88304522/175779761-2608ad63-bc92-4931-b08a-24bef4095914.PNG">
+        <img width="1011" alt="Class" src="https://user-images.githubusercontent.com/88304522/175779761-2608ad63-bc92-4931-b08a-24bef4095914.PNG">
     </td>
      <td>
-     <img width="385" alt="Wireframes" src="https://user-images.githubusercontent.com/88304522/175779764-ab215636-0e07-4563-aac3-eb065e1305ad.PNG">
+     <img width="1011" alt="Wireframes" src="https://user-images.githubusercontent.com/88304522/175779764-ab215636-0e07-4563-aac3-eb065e1305ad.PNG">
     </td>
    </tr>
   </table>
