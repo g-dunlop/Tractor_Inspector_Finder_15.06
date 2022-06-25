@@ -92,6 +92,7 @@
   <li>cd into the 'client folder'</li>
   <li>npm install</li>
   <li>npm start</li>
+  </ul>
   
   <h2>What we learned</h2>
   <ul>
