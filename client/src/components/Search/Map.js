@@ -138,7 +138,7 @@ function MyComponent({tractorLatLong, inspectors, inspectorLatAndLong}) {
                                                 onCloseClick={handleCloseClick}> 
                                                     <div>
                                                             <ul className="info-window-list">
-                                                                <li><span className="bold">Rating: <Rating readonly={true} size={15} ratingValue={activeMarker.rating} /></span></li>
+                                                                <li><Rating className="rating" readonly={true} size={15} ratingValue={activeMarker.rating} /></li>
                                                                 <li><span className="bold">Name: </span>{activeMarker.name}</li>
                                                                 <li><span className="bold">Address: </span>{activeMarker.address}</li>
                                                                 <li><span className="bold">Postcode: </span>{activeMarker.postcode}</li>

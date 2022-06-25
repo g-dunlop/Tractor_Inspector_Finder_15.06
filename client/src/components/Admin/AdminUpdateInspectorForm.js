@@ -137,7 +137,7 @@ const AdminUpdateInspectorForm = ({inspectorToUpdate, handleSubmission, tractors
                     {mappedManufacturers}
                 </fieldset>
                 
-                <Button variant="success" className="admin-button" type="submit" value="Add Inspector">Add Inspector</Button>
+                <Button variant="success" className="admin-button" type="submit" value="Update Inspector">Update Inspector</Button>
             </Form>
         </section>
         
