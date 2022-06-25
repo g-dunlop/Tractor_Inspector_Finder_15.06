@@ -52,30 +52,31 @@
      <img width="385" alt="Wireframes" src="https://user-images.githubusercontent.com/88304522/175779764-ab215636-0e07-4563-aac3-eb065e1305ad.PNG">
     </td>
    </tr>
+  </table>
   
   <h2>Screenshots</h2>
    <table>
    <tr>
     <td>
-      <img width="1280" alt="StockTracker_1" src="https://user-images.githubusercontent.com/88304522/167291966-422117b0-c7f1-4771-bf61-391b430d878a.png">
+      <img width="958" alt="tf_1" src="https://user-images.githubusercontent.com/88304522/175780127-6392aad8-4916-49dc-97c8-3859cc746c5d.PNG">
     </td>
     <td>
-        <img width="1280" alt="StockTracker_2" src="https://user-images.githubusercontent.com/88304522/167291970-87a0ba87-8228-4610-a476-661eddb17ecb.png">
+       <img width="959" alt="tf_2" src="https://user-images.githubusercontent.com/88304522/175780140-2bfb45de-6a43-49e7-ac79-f150f2638f5a.PNG">
     </td>
      <td>
-        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+     <img width="956" alt="tf_3" src="https://user-images.githubusercontent.com/88304522/175780142-9303fa4f-56a2-4d9a-b2f6-ba117355f45e.PNG">
     </td>
    </tr>
     
    <tr>
      <td>
-        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+        <img width="954" alt="tf_4" src="https://user-images.githubusercontent.com/88304522/175780148-dc6c451b-7b02-4f83-a3f2-f5690d92a488.PNG">
     </td>
     <td>
-        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+        <img width="959" alt="tf_5" src="https://user-images.githubusercontent.com/88304522/175780153-4e3396e4-5f47-4b6a-9e65-b33d2abc8657.PNG">
     </td>
     <td>
-       <img width="1280" alt="StockTracker_4" src="https://user-images.githubusercontent.com/88304522/167291978-b26272c6-06bc-47c9-ad23-bfe7a925f635.png">
+       <img width="955" alt="tf_6" src="https://user-images.githubusercontent.com/88304522/175780160-cde17b18-4b30-4f91-b9d6-024df0d5e71c.PNG">
     </td>
    </tr>
   </table>
