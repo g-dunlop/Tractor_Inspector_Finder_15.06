@@ -52,6 +52,40 @@
      <img width="385" alt="Wireframes" src="https://user-images.githubusercontent.com/88304522/175779764-ab215636-0e07-4563-aac3-eb065e1305ad.PNG">
     </td>
    </tr>
+  
+  <h2>Screenshots</h2>
+   <table>
+   <tr>
+    <td>
+      <img width="1280" alt="StockTracker_1" src="https://user-images.githubusercontent.com/88304522/167291966-422117b0-c7f1-4771-bf61-391b430d878a.png">
+    </td>
+    <td>
+        <img width="1280" alt="StockTracker_2" src="https://user-images.githubusercontent.com/88304522/167291970-87a0ba87-8228-4610-a476-661eddb17ecb.png">
+    </td>
+     <td>
+        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+    </td>
+   </tr>
+    
+   <tr>
+     <td>
+        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+    </td>
+    <td>
+        <img width="1280" alt="StockTracker_3" src="https://user-images.githubusercontent.com/88304522/167291973-c8821aa3-fd2c-4c39-bbe0-38d9222c735a.png">
+    </td>
+    <td>
+       <img width="1280" alt="StockTracker_4" src="https://user-images.githubusercontent.com/88304522/167291978-b26272c6-06bc-47c9-ad23-bfe7a925f635.png">
+    </td>
+   </tr>
+  </table>
+
+  
+  
+  <h2>How to Run the App</h2>
+  <ul>
+    <li>Fork the repository and then clone it clone to local computer</li>
+    <li>Open the project in Intellij and start the server 
  
  
  
