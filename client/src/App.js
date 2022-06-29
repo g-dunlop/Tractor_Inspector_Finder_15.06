@@ -5,6 +5,7 @@ import SearchContainer from './containers/SearchContainer';
 import AdminContainer from './containers/AdminContainer';
 import AdminUpdateContainer from './containers/AdminUpdateContainer';
 import Landing from './components/Landing';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -14,13 +15,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 
 function App() {
-
+  
   const { loginWithRedirect } = useAuth0();
 
   const handleLoginClick = () => {
     loginWithRedirect()
     // .then(res => console.log(res))
   }
+
+  
+
 
     return (
       <div className="App">

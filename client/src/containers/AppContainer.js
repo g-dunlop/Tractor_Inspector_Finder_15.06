@@ -7,20 +7,37 @@ import { Toaster } from "react-hot-toast";
 import {useNavigate} from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import Profile from "../components/Profile";
+import Loading from "../components/Loading";
+import AuthenticationButton from "../components/buttons/AuthenticationButton";
 
 
 const AppContainer = () => {
 
-   let navigate = useNavigate();
+    const { isLoading } = useAuth0();
+    const {isAuthenticated} = useAuth0();
 
-    const { logout} = useAuth0();
+    if (isLoading) {
+        return <Loading />;
+      }
+
+   let navigate = useNavigate();
 
     return(
         <div className="app-container">
             <Navbar bg="success" variant="dark" expand="lg" className="gap-3 px-3">
-                <Container >
-                    <Navbar.Brand href="/home">TractorFactor</Navbar.Brand>
+                <Container>
+                <div className="extras">
+                        {isAuthenticated ? <Profile /> : null}
+                        <AuthenticationButton  />
+                </div>
+
+
+                <Navbar.Brand href="/home">TractorFactor</Navbar.Brand>
+                    
+                     
+                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                   
                     <Navbar.Collapse>
                         <Nav variant="pills success"  className="flex-grow-1 justify-content-end"  >
                             <Nav.Item>
@@ -33,11 +50,16 @@ const AppContainer = () => {
                             <Nav.Link  onClick = {() => {navigate("/admin")}} href="admin">Admin</Nav.Link>
                             </Nav.Item>
                         </Nav>
+                        
+                       
                     </Navbar.Collapse>
-                    <Profile />
-                    <button onClick={() => logout({ returnTo: 'http://localhost:3000/home/' })}>Log Out</button>
+                   
+                    
                 </Container>
+
+               
             </Navbar>
+            
             <div className="App">
             <div><Toaster position="top-right"/></div>
             <Outlet />

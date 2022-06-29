@@ -3,6 +3,23 @@
   min-height:90vh;
 }
 
+.btn{
+  font-size:0.8rem;
+}
+
+
+.profile{
+  color:white;
+  font-size:0.7rem;
+  
+}
+.profile > p{
+  margin:0;
+}
+
+.extras {
+  margin-right:2rem;
+}
 
 .landing-page{
   width:100%;
