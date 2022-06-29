@@ -5,23 +5,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Toaster } from "react-hot-toast";
 import {useNavigate} from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
+import Profile from "../components/Profile";
 
 
 const AppContainer = () => {
 
-   let navigate = useNavigate()
+   let navigate = useNavigate();
 
+    const { logout} = useAuth0();
 
     return(
         <div className="app-container">
             <Navbar bg="success" variant="dark" expand="lg" className="gap-3 px-3">
                 <Container >
-                    <Navbar.Brand href="/">TractorFactor</Navbar.Brand>
+                    <Navbar.Brand href="/home">TractorFactor</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse>
                         <Nav variant="pills success"  className="flex-grow-1 justify-content-end"  >
                             <Nav.Item>
-                            <Nav.Link onClick = {() => {navigate("/")}} href="/">Home</Nav.Link>
+                            <Nav.Link onClick = {() => {navigate("/home")}} href="/home">Home</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                             <Nav.Link  onClick = {() => {navigate("/search")}} href="search">Search Inspectors</Nav.Link>
@@ -31,6 +34,8 @@ const AppContainer = () => {
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
+                    <Profile />
+                    <button onClick={() => logout({ returnTo: 'http://localhost:3000/home/' })}>Log Out</button>
                 </Container>
             </Navbar>
             <div className="App">

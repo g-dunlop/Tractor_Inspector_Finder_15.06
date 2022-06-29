@@ -4,7 +4,8 @@ import toast from 'react-hot-toast';
 import Form from 'react-bootstrap/Form';
 import { FloatingLabel } from 'react-bootstrap';
 import {FormCheck} from 'react-bootstrap';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const AdminAddInspectorForm = () => {
 
@@ -141,17 +142,21 @@ const AdminAddInspectorForm = () => {
     }, [lat, lng])
 
  
-
+    const {getAccessTokenSilently} = useAuth0();
 
     const addInspectorToDb = () => {
         if (newInspector !== null){
-        fetch('http://localhost:8080/inspectors',{
+            getAccessTokenSilently()
+            .then(accessToken => 
+            fetch('http://localhost:8080/inspectors',{
             method:'POST',
             body: JSON.stringify(newInspector),
             headers:{
+                Authorization: 'Bearer ' + accessToken,
                 'Content-Type': 'application/json'
             }
         })
+        )
         .then(res=> {
             if (res.ok) {
                

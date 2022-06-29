@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {Rating} from 'react-simple-star-rating';
-
+import toast from 'react-hot-toast';
 import InspectorNotes from "../Admin/AdminInspectorNotes";
 import Notes from '../../static/notes-icon.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const SearchInspectorsItem = ({inspector, index, letter}) => {
 
@@ -33,22 +34,28 @@ const SearchInspectorsItem = ({inspector, index, letter}) => {
 
     }, [inspectorToUpdate])
 
+    const {getAccessTokenSilently} = useAuth0();
+
     const postInspector = () => {
+        getAccessTokenSilently()
+        .then(accessToken => 
         fetch(`http://localhost:8080/inspectors/${inspectorToUpdate.id}`,{
             method:'PUT',
             body: JSON.stringify(inspectorToUpdate),
             headers:{
+                Authorization: 'Bearer ' + accessToken,
                 'Content-Type': 'application/json'
             }
-        })
+        }))
         .then(res=> {
             if (res.ok) {
-                console.log(inspectorToUpdate)
-            } 
-            throw new Error('shiiiit')
+                toast.success("Inspector updated")
+            } else{
+            throw new Error('Smething went wrong')
+            }
         })
         .catch((error) => {
-            console.log(error)
+            toast.error("Not updated")
             });
         }
      

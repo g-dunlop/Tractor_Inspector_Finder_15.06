@@ -7,7 +7,8 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import { FloatingLabel } from 'react-bootstrap';
 import {FormCheck} from 'react-bootstrap';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const AdminUpdateContainer = () => {
@@ -104,10 +105,16 @@ const AdminUpdateContainer = () => {
         setCheckedState(updatedCheckedState);
     }
 
+    const {getAccessTokenSilently} = useAuth0();
+
     const updateInspectorInDb = (inspector) => {
-        TractorFactorService.updateInspector(inspector)
-        .then(toast.success("updated"))
-    }
+        getAccessTokenSilently()
+        .then(accessToken => 
+        TractorFactorService.updateInspector(inspector, accessToken)
+        .then(() => {
+                toast.success("Inspector updated");
+        }))
+     }
     
 
    

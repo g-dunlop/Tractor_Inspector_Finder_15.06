@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import toast from 'react-hot-toast';
 import Button from 'react-bootstrap/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 
@@ -25,15 +26,21 @@ const AdminAddManufacturerForm = () => {
         }
     }, [manufacturer])
 
+    const {getAccessTokenSilently} = useAuth0();
+
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        fetch('http://localhost:8080/tractors',{
-            method:'POST',
-            body: JSON.stringify(newTractor),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
+        getAccessTokenSilently()
+            .then(accessToken => 
+                fetch('http://localhost:8080/tractors',{
+                    method:'POST',
+                    body: JSON.stringify(newTractor),
+                    headers:{
+                        Authorization: 'Bearer ' + accessToken,
+                        'Content-Type': 'application/json'
+                    }
+                })
+             )
         .then(res=> {
             if (res.ok) {
                 toast.success("Manufacturer added")

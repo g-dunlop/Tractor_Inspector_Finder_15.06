@@ -6,7 +6,8 @@ import AdminInspectorSearchForm from '../components/Admin/AdminInspectorSearchFo
 import AdminInspectorsList from '../components/Admin/AdminInspectorsList';
 import TractorFactorService from "../services.js/TractorFactorServices";
 import toast from 'react-hot-toast';
-import { useOutletContext } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 const AdminContainer = () => {
 
@@ -18,7 +19,7 @@ const AdminContainer = () => {
     const [allInspectors, setAllInspectors] = useState(null)
 
     
-    
+    const {getAccessTokenSilently} = useAuth0();
 
     const handleComponentClick = (component) => {
         if (component === 'add-inspector'){
@@ -76,13 +77,22 @@ const AdminContainer = () => {
 
      //**UPDATE INSPECTOR */
      const updateInspector = (inspectorToUpdate) => {
-        TractorFactorService.updateInspector(inspectorToUpdate)
+        getAccessTokenSilently()
+        .then(accessToken => 
+        TractorFactorService.updateInspector(inspectorToUpdate, accessToken)
+        .then(() => {
+            
+                toast.success("Inspector updated");
+            
+        }))
      }
 
 
     const handleDeleteButtonClick = (id) => {
-        TractorFactorService.deleteInspector(id)
-        .then(toast.success("Inspector deleted"))
+        getAccessTokenSilently()
+        .then(accessToken => 
+        TractorFactorService.deleteInspector(id, accessToken)
+        .then(toast.success("Inspector deleted")))
         setTimeout(() => {
             fetchAllInspectors();
         }, 500)
@@ -98,7 +108,7 @@ const AdminContainer = () => {
             <AdminNav handleComponentClick={handleComponentClick} />
             <section className = "admin-form-container">
                 {isInspectorActive === true ? <AdminAddInspectorForm allManufacturers={allManufacturers} /> : null }
-                {isTractorActive === true ? <AdminAddManufacturerForm /> : null }
+                {isTractorActive === true ? <AdminAddManufacturerForm  /> : null }
                 {isSearchActive === true ? <AdminInspectorSearchForm getInspectorsByName={getInspectorsByName} inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick}  /> : null }
                 {isInspectorsActive === true && allInspectors !== null ? <AdminInspectorsList inspectors={allInspectors} updateInspector={updateInspector} handleDeleteButtonClick={handleDeleteButtonClick}  /> : null}
             </section>

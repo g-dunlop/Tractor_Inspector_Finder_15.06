@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import AppContainer from './containers/AppContainer';
 import SearchContainer from './containers/SearchContainer';
@@ -7,24 +7,29 @@ import AdminUpdateContainer from './containers/AdminUpdateContainer';
 import Landing from './components/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { useAuth0 } from "@auth0/auth0-react";
+
+
+
+
 
 function App() {
 
-//   const [inspectorId, setInspectorId] = useState(null)
+  const { loginWithRedirect } = useAuth0();
 
-//   const handleUpdateButtonClick = (id) => {
-//     setInspectorId(id)
-//     console.log(id)
-// }
+  const handleLoginClick = () => {
+    loginWithRedirect()
+    // .then(res => console.log(res))
+  }
 
     return (
       <div className="App">
-        <BrowserRouter>
+       
         <Routes>
           <Route path="/" element={<AppContainer   />} >
-            <Route path="/" element={<Landing />} />
+            <Route path="/home" element={<Landing handleLoginClick={handleLoginClick}  />} />
             <Route path="/search" element={<SearchContainer />} />
-            <Route path="/admin" element={<AdminContainer />} />
+            <Route path="/admin" element={<AdminContainer  />} />
             <Route path="/admin/:id" element={<AdminUpdateContainer />} />
             <Route
       path="*"
@@ -36,7 +41,7 @@ function App() {
     />
           </Route>
         </Routes>
-        </BrowserRouter>
+       
       </div>
   
   

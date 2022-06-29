@@ -3,7 +3,10 @@
 
 const baseUrl = 'http://localhost:8080/'
 
+
 const TractorFactorService = {
+    
+
     getAllManufacturers() {
         return fetch(baseUrl+"tractors")
         .then(res => res.json());
@@ -24,11 +27,12 @@ const TractorFactorService = {
         .then(res => res.json())
     },
 
-    updateInspector(inspectorToUpdate) {
+    updateInspector(inspectorToUpdate, accessToken) {
         return fetch(`${baseUrl}inspectors/${inspectorToUpdate.id}`,{
             method:'PUT',
             body: JSON.stringify(inspectorToUpdate),
             headers:{
+                Authorization: 'Bearer ' + accessToken,
                 'Content-Type': 'application/json'
             }
         })
@@ -43,9 +47,13 @@ const TractorFactorService = {
             });
         },
 
-    deleteInspector(id) {
+    deleteInspector(id, accessToken) {
         return fetch(`${baseUrl}inspectors/${id}`,{
-        method:'DELETE'})
+        method:'DELETE',
+        headers:{
+            Authorization: 'Bearer ' + accessToken,
+            'Content-Type': 'application/json'
+        }})
         .then(res=> {
             if (res.ok) {
                 console.log("ok")
