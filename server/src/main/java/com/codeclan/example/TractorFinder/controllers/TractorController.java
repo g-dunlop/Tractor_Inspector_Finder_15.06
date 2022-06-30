@@ -5,9 +5,10 @@ import com.codeclan.example.TractorFinder.repositories.TractorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
+//import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,14 @@ public class TractorController {
     }
 
     @PostMapping(value = "/tractors")
+    @PreAuthorize("hasAuthority('create:tractors')")
     public ResponseEntity<Tractor> postTractor(@RequestBody Tractor tractor){
         tractorRepository.save(tractor);
         return new ResponseEntity<>(tractor, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "tractors/{id}")
+    @PreAuthorize("hasAuthority('create:items')")
     public ResponseEntity<Tractor> putTractor(@RequestBody Tractor tractor, @PathVariable Long id){
         Tractor tractorToUpdate = tractorRepository.findById(id).get();
         tractorToUpdate.setManufacturer(tractor.getManufacturer());

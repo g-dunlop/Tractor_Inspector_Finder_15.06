@@ -7,6 +7,7 @@ import com.codeclan.example.TractorFinder.repositories.TractorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class InspectorController {
     }
 
     @PostMapping(value = "/inspectors")
+    @PreAuthorize("hasAuthority('create:inspectors')")
     public ResponseEntity<Inspector> postInspector(@RequestBody Inspector inspector){
         Inspector inspectorToAdd = new Inspector(
                 inspector.getName(),
@@ -66,12 +68,14 @@ public class InspectorController {
     }
 
     @DeleteMapping(value = "inspectors/{id}")
+    @PreAuthorize("hasAuthority('delete:inspectors')")
     public ResponseEntity<Long> deleteInspector(@PathVariable Long id){
         inspectorRepository.deleteById(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping(value = "inspectors/{id}")
+    @PreAuthorize("hasAuthority('update:inspectors')")
     public ResponseEntity<Inspector> putInspector(@RequestBody Inspector inspector, @PathVariable Long id){
         System.out.println(inspector.getRating());
         Inspector inspectorToUpdate = inspectorRepository.findById(id).get();
